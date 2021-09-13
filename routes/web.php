@@ -24,4 +24,9 @@ Route::post('/logout', 'Auth\AdminLoginController@logout')->name('visitor.logout
 
 Route::get('/dashboard', 'Backend\HomeController@dashboard')->name('dashboard');
 
+Route::get('/profile','Backend\HomeController@profile')->name('profile');
+Route::post('update/Profile','Backend\HomeController@updateProfile')->name('update.profile');
+Route::post('/update/password','Backend\HomeController@updatePassword')
+->name('update.password');
+
 
