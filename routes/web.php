@@ -18,7 +18,7 @@ Auth::routes();
 //     return view('welcome');
 // });
 
-Route::get('/', 'Auth\AdminLoginController@showLoginForm')->name('login');
+Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\AdminLoginController@login')->name('visitor.login');
 Route::post('/logout', 'Auth\AdminLoginController@logout')->name('visitor.logout');
 
@@ -30,6 +30,6 @@ Route::post('/update/password','Backend\HomeController@updatePassword')
 ->name('update.password');
 
 /////**********************frontend**********************************
-Route::get('/home','frontend\HomeController@index')->name('home');
+Route::get('/','Frontend\HomeController@index')->name('home');
 
 

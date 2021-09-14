@@ -53,7 +53,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="login" title="Login">
+                        <a href="{{route('login')}}" class="login" title="Login">
                             <i class="fa fa-sign-in"></i>Login
                         </a>
                     </li>

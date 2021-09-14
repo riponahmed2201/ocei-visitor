@@ -57,7 +57,7 @@ class AdminLoginController extends Controller
             }else{
                 $this->logout($request);
             }
-            return redirect('/')
+            return redirect('/login')
                 ->withInput($request->only('email'))
                 ->withErrors($this->errors);
         }
