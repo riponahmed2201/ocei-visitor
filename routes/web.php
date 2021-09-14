@@ -29,4 +29,7 @@ Route::post('update/Profile','Backend\HomeController@updateProfile')->name('upda
 Route::post('/update/password','Backend\HomeController@updatePassword')
 ->name('update.password');
 
+/////**********************frontend**********************************
+Route::get('/home','frontend\HomeController@index')->name('home');
+
 
