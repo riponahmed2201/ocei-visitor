@@ -5,6 +5,8 @@
 <link rel="icon" href="{{asset('frontend/echallan/assets/img/favicon.ico')}}" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/toastr.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/sweetalert2.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('select2/css/select2.css')}}">
+<link rel="stylesheet" href="{{asset('select2/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>@yield('title')</title>

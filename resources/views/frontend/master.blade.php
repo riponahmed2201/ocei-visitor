@@ -36,7 +36,7 @@
 
         @yield('contain')
 
-        @include('frontend.partials._right_sidebar')
+        
     </div><!--/.sidebar-offcanvas-->
 
         <script src="{{asset('frontend/echallan/assets/js/jquery.min.js')}}"></script>

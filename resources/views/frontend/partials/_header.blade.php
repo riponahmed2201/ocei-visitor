@@ -48,12 +48,12 @@
 
                 <ul class="list-inline user-info-wrapper">
                     <li class="signup-link">
-                        <a href="#" class="login" title="Signup">
+                        <a href="{{route('register')}}" class="login" title="Signup">
                             <i class="fa fa-user-plus"></i>Registration
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('login')}}" class="login" title="Login">
+                        <a href="{{route('visitor.login')}}" class="login" title="Login">
                             <i class="fa fa-sign-in"></i>Login
                         </a>
                     </li>

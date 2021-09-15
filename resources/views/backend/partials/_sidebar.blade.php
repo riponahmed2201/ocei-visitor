@@ -3,7 +3,7 @@
   <a href="{{route('dashboard')}}" class="brand-link">
     <img src="{{asset('images/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
          style="opacity: .8">
-    <span class="brand-text font-weight-light" style="color:green;">|| {{Auth::guard('system_admin')->user()->role}}</span>
+    <span class="brand-text font-weight-light" style="color:green;">|| {{session('user_name')}}</span>
   </a>
 
   <!-- Sidebar -->
@@ -14,7 +14,7 @@
         <img src="{{asset('images/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="javascript:void(0)" class="d-block">{{Auth::guard('system_admin')->user()->name}}</a>
+        <a href="javascript:void(0)" class="d-block">{{session('user_name')}}</a>
       </div>
     </div>
 
@@ -36,33 +36,15 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Forms
+                Visitors
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="{{route('all-visitor')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
+                  <p>All Visitor</p>
                 </a>
               </li>
             </ul>

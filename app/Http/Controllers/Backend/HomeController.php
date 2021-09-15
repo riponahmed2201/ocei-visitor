@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:system_admin');
+        $this->middleware('guest');
     }
 
     public function dashboard(){
@@ -56,7 +56,7 @@ class HomeController extends Controller
                 $visitors->save();
                 Session::flash('success','You Have Successfully Changed The Password');
                 Auth::logout();
-                return redirect()->route('login');
+                return redirect()->route('visitor.login');
                }else{
                 Session::flash('error','New Password Cannot Be The Same As Old Pass');
                 return redirect()->back();

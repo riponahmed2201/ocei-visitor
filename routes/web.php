@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+// Auth::routes();
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
-Route::post('/login', 'Auth\AdminLoginController@login')->name('visitor.login');
-Route::post('/logout', 'Auth\AdminLoginController@logout')->name('visitor.logout');
+Route::get('/visitor-login', 'Auth\AdminLoginController@showLoginForm')->name('visitor.login');
+Route::post('/visitor_login_check', 'Auth\AdminLoginController@visitor_login_check')->name('visitor.login_check');
+Route::post('/visitor_logout', 'Auth\AdminLoginController@logout')->name('visitor.logout');
 
 Route::get('/dashboard', 'Backend\HomeController@dashboard')->name('dashboard');
 
@@ -29,7 +29,13 @@ Route::post('update/Profile','Backend\HomeController@updateProfile')->name('upda
 Route::post('/update/password','Backend\HomeController@updatePassword')
 ->name('update.password');
 
+////*************all visitor************
+Route::get('/all-visitor','Backend\VisitorController@allVisitor')->name('all-visitor');
+
 /////**********************frontend**********************************
 Route::get('/','Frontend\HomeController@index')->name('home');
+///*********************registration*******************
+Route::get('/registration','Frontend\RegistrationController@register')->name('register');
+Route::post('/register','Frontend\RegistrationController@storeRegister')->name('store.register');
 
 

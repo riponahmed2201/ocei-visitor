@@ -12,10 +12,10 @@
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="far fa-user"></i> {{Auth::guard('system_admin')->user()->name}}
+        <i class="far fa-user"></i>{{session('user_name')}}
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <span class="dropdown-item dropdown-header">{{Auth::guard('system_admin')->user()->name}}</span>
+        <span class="dropdown-item dropdown-header">{{session('user_name')}}</span>
         <div class="dropdown-divider"></div>
         <a href="{{route('profile')}}" class="dropdown-item">
           <i class="fas fa-users mr-2"></i> Profile
