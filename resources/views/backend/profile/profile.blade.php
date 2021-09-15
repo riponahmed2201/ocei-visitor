@@ -22,16 +22,13 @@
                   <img class="profile-user-img img-fluid img-circle" src="{{asset('images/user4-128x128.jpg')}}" alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
+                <h3 class="profile-username text-center">{{session('user_name')}}</h3>
 
                 <p class="text-muted text-center">Visitor</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Name</b> <a class="float-right">{{Auth::user()->name}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Email</b> <a class="float-right">{{Auth::user()->email}}</a>
+                    <b>Name</b> <a class="float-right">{{session('user_name')}}</a>
                   </li>
                 </ul>
                 <a href="javascript:void(0)" class="btn btn-primary btn-block"><b>Update</b></a>
@@ -79,37 +76,15 @@
                 <div class="tab-content">
                   <div class="active tab-pane" id="profile">
                     <!-- Post -->
-                    <form class="form-horizontal" action="#" method="post">
+                    <form class="form-horizontal" action="{{route('update.profile')}}" method="post">
                       @csrf
-                      <div class="form-group row {{$errors->has('name') ? 'has-error' : ''}}">
+                      <div class="form-group row {{$errors->has('user_name') ? 'has-error' : ''}}">
                         <label for="inputName" class="col-sm-2 col-form-label">Name<span style="color: red;">*</span></label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="{{Auth::guard('system_admin')->user()->name}}">
-                          @if($errors->has('name'))
+                          <input type="text" class="form-control" name="user_name" id="user_name" placeholder="Name" value="{{session('user_name')}}">
+                          @if($errors->has('user_name'))
                           <span class="help-block text-danger">
-                            {{$errors->first('name')}}
-                          </span>
-                          @endif
-                        </div>
-                      </div>
-                      <div class="form-group row {{$errors->has('email') ? 'has-error' : ''}}">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email<span style="color: red;">*</span></label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{Auth::guard('system_admin')->user()->email}}">
-                          @if($errors->has('email'))
-                          <span class="help-block text-danger">
-                            {{$errors->first('email')}}
-                          </span>
-                          @endif
-                        </div>
-                      </div>
-                      <div class="form-group row {{$errors->has('mobile') ? 'has-error' : ''}}">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Mobile<span style="color: red;">*</span></label>
-                        <div class="col-sm-10">
-                          <input type="number" class="form-control" name="mobile" id="mobile" placeholder="Mobile" value="{{Auth::guard('system_admin')->user()->mobile}}">
-                          @if($errors->has('mobile'))
-                          <span class="help-block text-danger">
-                            {{$errors->first('mobile')}}
+                            {{$errors->first('user_name')}}
                           </span>
                           @endif
                         </div>

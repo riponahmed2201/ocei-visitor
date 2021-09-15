@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminLoginController extends Controller
 {
-    use AuthenticatesUsers;
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
     private $errors= [];
     protected $redirectTo = '/dashboard';
 
@@ -33,22 +29,35 @@ class AdminLoginController extends Controller
      */
     public function visitor_login_check(Request $request)
     {
-         $input = $request->all();
-  
-        $this->validate($request, [
+
+        $request->validate([
             'user_name' => 'required',
-            'password' => 'required',
+            'password' => 'required'
         ]);
-  
-        $fieldType = filter_var($request->user_name, FILTER_VALIDATE_EMAIL) ? 'email' : 'user_name';
-        //dd($fieldType);
-        if(auth()->attempt(array($fieldType => $input['user_name'], 'password' => $input['password'])))
-        {
-            return redirect()->route('dashboard');
+
+        $auth = User::where('user_name','=', $request->user_name)->first();
+        if ($auth) {
+            if (Hash::check($request->password, $auth->password)) {
+                session([
+                     'id' =>$auth->id,
+                     'user_name' =>$auth->user_name,
+                     'role_id' =>$auth->role_id,
+                ]);
+                if ($auth->role_id == 1) {
+                    return redirect('/dashboard');
+                }elseif ($auth->role_id == 9) {
+                    echo "No working";
+                }else{
+                    return redirect('/visitor-login');
+                }
+
+            }else{
+                return redirect('/visitor-login')
+                ->withInput($request->only('user_name'))
+                ->withErrors($this->errors);
+            }
         }else{
-            //echo "dsdskjd";
-            return redirect()->route('visitor.login')
-                ->with('error','Email address and password are wrong.');
+            return back()->with('failed','No Account For This Email');
         }
     }
     

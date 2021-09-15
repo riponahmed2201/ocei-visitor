@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\VisitorAdmin;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -18,6 +18,7 @@ class HomeController extends Controller
     }
 
     public function dashboard(){
+        Session::put('page','dashboard');
         return view('backend.dashboard.dashboard');
     }
 
@@ -27,14 +28,11 @@ class HomeController extends Controller
 
     public function updateProfile(Request $request){
         $this->validate($request,[
-            'name'=>'required|min:6',
-            'mobile'=>'required|min:11',
-            'email'=>'required|email|unique:admins,email,'.Auth::id(),
+            'user_name'=>'required'
         ]);
-          $visitors=VisitorAdmin::find(Auth::id());
-          $visitors->name=$request->name;
-          $visitors->mobile=$request->mobile;
-          $visitors->email=$request->email;
+          $id=Session::id();
+          $visitors=User::find($id);
+          $visitors->user_name=$request->user_name;
           $visitors->save();
           //Session::flash('success','Successfully Profile Updated');
           return redirect()->back()->with('success','Successfully Profile Updated!');

@@ -17,10 +17,6 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">{{session('user_name')}}</span>
         <div class="dropdown-divider"></div>
-        <a href="{{route('profile')}}" class="dropdown-item">
-          <i class="fas fa-users mr-2"></i> Profile
-          <span class="float-right text-muted text-sm"></span>
-        </a>
         <div class="dropdown-divider"></div>
         <a href="#" onclick="document.getElementById('visitor.logout').submit()" class="dropdown-item">
           <i class="fas fa-sign-out-alt"></i> Logout
