@@ -18,6 +18,8 @@ class AdminCheck
         $loggedData=session('role_id');
         if ($loggedData != null && $loggedData == 1) {
             return $next($request);
+        }elseif($loggedData != null && $loggedData == 9){
+            return $next($request);
         }else{
             return redirect('/visitor-login');
         }

@@ -39,14 +39,15 @@ class AdminLoginController extends Controller
         if ($auth) {
             if (Hash::check($request->password, $auth->password)) {
                 session([
-                     'id' =>$auth->id,
+                     'user_id' =>$auth->user_id,
                      'user_name' =>$auth->user_name,
                      'role_id' =>$auth->role_id,
                 ]);
+                //dd(session()->get());
                 if ($auth->role_id == 1) {
                     return redirect('/dashboard');
                 }elseif ($auth->role_id == 9) {
-                    echo "No working";
+                    return redirect('/dashboard');
                 }else{
                     return redirect('/visitor-login');
                 }

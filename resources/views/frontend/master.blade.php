@@ -150,7 +150,8 @@
 
             });
         </script>
-    </div><!-- Footer Section -->
+    </div>
+    <!-- Footer Section -->
     @include('frontend.partials._footer')
     <!-- End Footer Section -->
 

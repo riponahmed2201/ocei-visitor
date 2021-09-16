@@ -43,6 +43,7 @@
         @else
             <?php $active=""; ?>
         @endif
+        @if(session('role_id') == 1)
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link {{$active}}">
               <i class="nav-icon fas fa-table"></i>
@@ -65,6 +66,37 @@
               </li>
             </ul>
           </li>
+          @endif
+
+          @if(Session::get('page')=="forwar-visitor")
+            <?php $active="active"; ?>
+          @else
+            <?php $active=""; ?>
+          @endif
+          @if(session('role_id') == 9)
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link {{$active}}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Visitors
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              @if(Session::get('page')=="forwar-visitor")
+                  <?php $active="active"; ?>
+              @else
+                <?php $active=""; ?>
+              @endif
+              <li class="nav-item">
+                <a href="{{route('forward-visitor')}}" class="nav-link {{$active}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Visitor</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endif
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

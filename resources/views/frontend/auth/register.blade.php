@@ -85,19 +85,19 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="NAME">Designation :<span id="mark">&nbsp;*</span></label>
-                                    <select name="designation_id" class="form-control select2bs4" id="designation_id">
-                                        <option value="">----Select Designation----</option>
-                                        @foreach($designations as $designation)
-                                        <option value="{{$designation->designation_id}}" {{ old('designation_id') == $designation->designation_id ? "selected" :""}}>{{$designation->designation_name}}</option>
+                                    <label for="NAME">Employee Name :<span id="mark">&nbsp;* (Employee name)</span></label>
+                                    <select name="employee_id" class="form-control select2bs4" id="employee_id">
+                                        <option value="">----Select Employee Name----</option>
+                                        @foreach($employees as $employee)
+                                        <option value="{{$employee->employee_id}}" {{ old('employee_id') == $employee->employee_id ? "selected" :""}}>{{$employee->first_name}}</option>
                                         @endforeach
                                     </select>
-                                    @if($errors->has('designation_id'))
-                                        <span class="text-danger">{{ $errors->first('designation_id') }}</span>
+                                    @if($errors->has('employee_id'))
+                                        <span class="text-danger">{{ $errors->first('employee_id') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="NAME">Department :<span id="mark">&nbsp;*</span></label>
+                                    <label for="NAME">Department :<span id="mark">&nbsp;* (Employee department)</span></label>
                                     <select class="form-control select2bs4" name="department_id" id="department_id">
                                         <option value="">----Select Department----</option>
                                         @foreach($departments as $department)
@@ -106,6 +106,18 @@
                                     </select>
                                     @if($errors->has('department_id'))
                                         <span class="text-danger">{{ $errors->first('department_id') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="NAME">Designation :<span id="mark">&nbsp;* (Employee designation)</span></label>
+                                    <select name="designation_id" class="form-control select2bs4" id="designation_id">
+                                        <option value="">----Select Designation----</option>
+                                        @foreach($designations as $designation)
+                                        <option value="{{$designation->designation_id}}" {{ old('designation_id') == $designation->designation_id ? "selected" :""}}>{{$designation->designation_name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('designation_id'))
+                                        <span class="text-danger">{{ $errors->first('designation_id') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group">
@@ -123,7 +135,7 @@
                                         <!--                                        <input type="hidden" name="REGISTRATION_TYPE" class="REGISTRATION_TYPE" value="PERSON"/>-->
 
                                         <span>Are you already registered? Please</span>
-                                        <a class="light-green" href="#">
+                                        <a class="light-green" href="{{route('visitor.login')}}">
                                            login
                                         </a>
                                     </div>

@@ -25,6 +25,11 @@ Route::middleware('admin')->group(function(){
 	Route::get('/dashboard', 'Backend\HomeController@dashboard')->name('dashboard');
 	////*************all visitor************
     Route::get('/all-visitor','Backend\VisitorController@allVisitor')->name('all-visitor');
+    //Visitor Delete & Forword
+    Route::post('/delete/all/visitors','Backend\VisitorController@deleteAll');
+    Route::post('/activate/all/visitors','Backend\VisitorController@forwordAll');
+    ///*********employee***************//
+    Route::get('/all-forward-visitor','Backend\EmployeeController@forwardingVisitor')->name('forward-visitor');
 });
 
 

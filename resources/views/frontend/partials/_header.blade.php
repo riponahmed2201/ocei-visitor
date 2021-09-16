@@ -32,7 +32,7 @@
     <header class="header-wrapper col-xs-12 padding-lr0 clearfix">
         <!--<div class="col-sm-6 col-md-7 logo_wrapper clearfix">-->
         <div class="col-sm-6 col-md-7 logo_wrapper clearfix">
-            <a href="index.html" style="margin-right: 10px" class="pull-left">
+            <a href="{{route('home')}}" style="margin-right: 10px" class="pull-left">
                 <img src="{{asset('frontend/echallan/assets/img/logo.png')}}" alt="গণপ্রজাতন্ত্রী বাংলাদেশ">
             </a>
             <div class="pull-left">
