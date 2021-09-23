@@ -99,7 +99,7 @@
                           </div>
                           <div class="card-body">
                             <div class="form-group">
-                                <label for="NAME">Employee Name :<span id="mark">&nbsp;* (Employee name)</span></label>
+                                <label for="NAME">Employee Name :<span id="mark">&nbsp;*</span></label>
                                 <select name="employee_id" class="form-control select2bs4" id="employee_id">
                                     <option value="">----Select Employee Name----</option>
                                     @foreach($employees as $employee)
@@ -111,7 +111,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="NAME">Department :<span id="mark">&nbsp;* (Employee department)</span></label>
+                                <label for="NAME">Department :<span id="mark">&nbsp;*</span></label>
                                 <select class="form-control select2bs4" name="department_id" id="department_id">
                                     <option value="">----Select Department----</option>
                                     @foreach($departments as $department)
@@ -123,7 +123,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="NAME">Designation :<span id="mark">&nbsp;* (Employee designation)</span></label>
+                                <label for="NAME">Designation :<span id="mark">&nbsp;*</span></label>
                                 <select name="designation_id" class="form-control select2bs4" id="designation_id">
                                     <option value="">----Select Designation----</option>
                                     @foreach($designations as $designation)
