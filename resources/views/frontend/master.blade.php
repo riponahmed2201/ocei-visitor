@@ -44,111 +44,19 @@
         <script src="{{asset('frontend/echallan/assets/js/highcharts.min.js')}}"></script>
         <script src="{{asset('frontend/echallan/assets/js/exporting.min.js')}}"></script>
 
-<script>
-            jQuery(function ($) {
-                $("#scrollerNews").bootstrapNews({
-                    newsPerPage: 10,
-                    autoplay: true,
-                    onToDo: function () {
-                        // console.log(this);
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#photo_preview').attr('src', e.target.result);
                     }
-                });
-
-                setTimeout(function(){
-                    var currentYear = new Date().getFullYear();
-                    getYearlyReport(currentYear);
-                }, 500);
-
-                // Graph
-                window.getYearlyReport = function (currentYear) {
-                    var report_year;
-                    if(currentYear) report_year = currentYear;
-                    else report_year = $("#reportYear").val();
-                    // get the json
-                    $.ajax({
-                        type: 'POST',
-                        url: 'challanController.php',
-                        data: 'monthlyIncome=' + true + '&&reportYear=' + report_year,
-                    }).done(function(myData) {
-                        var obj = jQuery.parseJSON(myData);
-                        // initialize the data array
-                        var i, mySeries = [];
-                        Object.keys(obj).forEach(function (key){
-                            mySeries.push(obj[key].amount);
-                        });
-                        // console.log(mySeries);
-
-                        var chart = Highcharts.chart('monthlyIncome', {
-                            title: {
-                                text: 'মাসভিত্তিক প্রাপ্তি'
-                            },
-                            xAxis: {
-                                categories: [ 'জানুয়ারী', 'ফেব্রুয়ারী', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর']//['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                            },
-                            yAxis: {
-                                labels: {
-                                    align: 'left',
-                                    x: 0,
-                                    y: -15
-                                },
-                                title: {
-                                    text: 'প্রাপ্তি (হাজার টাকায়)'
-                                }
-                            },
-                            series: [{
-                                type: 'column',
-                                name: 'প্রাপ্তি',
-                                colorByPoint: true,
-                                data: mySeries,
-                                showInLegend: false
-                            }]
-                        });
-                    });
+                    reader.readAsDataURL(input.files[0]);
                 }
-
-                // code Wise Income
-                $.ajax({
-                    type: 'POST',
-                    url: 'challanController.php',
-                    data: 'codeWiseIncome=' + true,
-                }).done(function(myData) {
-                    var obj = jQuery.parseJSON(myData);
-                    // initialize the data array
-                    var amountSeries = [];
-                    Object.keys(obj.AMOUNT).forEach(function (key){
-                        amountSeries.push(parseInt(obj.AMOUNT[key]));
-                    });
-                    // console.log(myData);
-
-                    var chart = Highcharts.chart('codeWiseIncome', {
-                        title: {
-                            text: 'কর/সেবাভিত্তিক প্রাপ্তি'
-                        },
-                        xAxis: {
-                            categories: obj.CODE
-                        },
-                        yAxis: {
-                            labels: {
-                                align: 'left',
-                                x: 0,
-                                y: -15
-                            },
-                            title: {
-                                text: 'প্রাপ্তি (হাজার টাকায়)'
-                            }
-                        },
-                        series: [{
-                            type: 'column',
-                            name: 'প্রাপ্তি',
-                            colorByPoint: true,
-                            data:  amountSeries,
-                            showInLegend: false
-                        }]
-                    });
-                });
-
-
-            });
+            }
+          $("#image").change(function() {
+            readURL(this);
+       });
         </script>
     </div>
     <!-- Footer Section -->

@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/visitor-login', 'Auth\AdminLoginController@showLoginForm')->name('visitor.login');
-Route::post('/visitor_login_check', 'Auth\AdminLoginController@visitor_login_check')->name('visitor.login_check');
-Route::post('/visitor_logout', 'Auth\AdminLoginController@logout')->name('visitor.logout');
+Route::get('/visitor-login', 'Auth\VisitorLoginController@showLoginForm')->name('visitor.login');
+Route::post('/visitor_login_check', 'Auth\VisitorLoginController@visitor_login_check')->name('visitor.login_check');
+Route::post('/visitor_logout', 'Auth\VisitorLoginController@logout')->name('visitor.logout');
 
-Route::middleware('admin')->group(function(){
+Route::middleware('visitor')->group(function(){
 	Route::get('/dashboard', 'Backend\HomeController@dashboard')->name('dashboard');
 	////*************all visitor************
     Route::get('/all-visitor','Backend\VisitorController@allVisitor')->name('all-visitor');
@@ -30,6 +30,9 @@ Route::middleware('admin')->group(function(){
     Route::post('/activate/all/visitors','Backend\VisitorController@forwordAll');
     ///*********employee***************//
     Route::get('/all-forward-visitor','Backend\EmployeeController@forwardingVisitor')->name('forward-visitor');
+    ////*************Appoinment*********************////
+    Route::get('/appointment/list', 'Backend\AppointmentController@index')->name('appointment.list');
+    Route::get('/official/list', 'Backend\OfficialController@officiallist')->name('official.list');
 });
 
 

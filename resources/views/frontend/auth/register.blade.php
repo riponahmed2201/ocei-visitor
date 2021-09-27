@@ -33,56 +33,35 @@
             <section class="content">
               <div class="container-fluid">
                 <div class="row">
-                     <form method="post" action="{{route('store.register')}}" class="form clearfix">
+                     <form method="post" action="{{route('store.register')}}" class="form clearfix" enctype="multipart/form-data">
                      @csrf
                       <!-- left column -->
                       <div class="col-md-6">
                         <!-- general form elements -->
                         <div class="card card-primary">
-                          <div class="card-header">
-                            <h3 style="font-weight: bold;" class="card-title"><u>From Info</u></h3>
-                          </div>
-                          <!-- /.card-header -->
                           <!-- form start -->
                             <div class="card-body">
                               <div class="form-group">
-                                <label for="NAME">Name :<span id="mark">&nbsp;*</span></label>
-                                <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" placeholder="Enter your name">
+                                <label for="NAME">Full Name :<span id="mark">&nbsp;*</span></label>
+                                <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" placeholder="Full Name">
                                 @if($errors->has('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                               </div>
                               <div class="form-group">
-                                <label for="email">Email:<span id="mark">&nbsp;*</span></label>
+                                <label for="email">Email:</label>
                                 <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" placeholder="sample@email.com">
-                                @if($errors->has('email'))
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                              </div>
+                              <div class="form-group">
+                                <label>Password :<span id="mark">&nbsp;*</span></label>
+                                <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password">
+                                @if($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
                                 @endif
                               </div>
                               <div class="form-group">
-                                <label>Mobile Number<span id="mark">&nbsp;*</span></label>
-                                <input type="text" class="form-control" name="mobile" id="mobile" value="{{old('mobile')}}" placeholder="01xxxxxxxxx">
-                                @if($errors->has('mobile'))
-                                    <span class="text-danger">{{ $errors->first('mobile') }}</span>
-                                @endif
-                              </div>
-                              <div class="form-group">
-                                <label>Gender :<span id="mark">&nbsp;*</span></label>
-                                <select name="gender" class="form-control select2bs4">
-                                    <option value="">----Select Gender----</option>
-                                    <option value="Male" @if (old('gender') == "Male") {{ 'selected' }} @endif>Male</option>
-                                    <option value="Female" @if (old('gender') == "Female") {{ 'selected' }} @endif>Female</option>
-                                </select>
-                                @if($errors->has('gender'))
-                                    <span class="text-danger">{{ $errors->first('gender') }}</span>
-                                @endif
-                              </div>
-                              <div class="form-group">
-                               <label for="PASSWORD">Date Of Birth<span id="mark">&nbsp;*</span></label>
-                                <input type="date" class="form-control" name="date_of_birth" id="date_of_birth">
-                                @if($errors->has('date_of_birth'))
-                                    <span class="text-danger">{{ $errors->first('date_of_birth') }}</span>
-                                @endif
+                               <label for="PASSWORD">Profile Picture</label>
+                                <input type="file" class="form-control" name="image" id="image">
                               </div>
                             </div>
                             <!-- /.card-body -->
@@ -94,45 +73,30 @@
                       <div class="col-md-6">
                         <!-- Form Element sizes -->
                         <div class="card card-success">
-                          <div class="card-header">
-                            <h3 style="font-weight: bold;" class="card-title"><u>To Info</u></h3>
-                          </div>
                           <div class="card-body">
                             <div class="form-group">
-                                <label for="NAME">Employee Name :<span id="mark">&nbsp;*</span></label>
-                                <select name="employee_id" class="form-control select2bs4" id="employee_id">
-                                    <option value="">----Select Employee Name----</option>
-                                    @foreach($employees as $employee)
-                                    <option value="{{$employee->employee_id}}" {{ old('employee_id') == $employee->employee_id ? "selected" :""}}>{{$employee->first_name}}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('employee_id'))
-                                    <span class="text-danger">{{ $errors->first('employee_id') }}</span>
+                                <label>Phone Number<span id="mark">&nbsp;*</span></label>
+                                <input type="text" class="form-control" name="phone" id="phone" value="{{old('phone')}}" placeholder="Phone">
+                                @if($errors->has('phone'))
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="NAME">Department :<span id="mark">&nbsp;*</span></label>
-                                <select class="form-control select2bs4" name="department_id" id="department_id">
-                                    <option value="">----Select Department----</option>
-                                    @foreach($departments as $department)
-                                    <option value="{{$department->department_id}}">{{$department->department_name}}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('department_id'))
-                                    <span class="text-danger">{{ $errors->first('department_id') }}</span>
+                                <label for="NAME">Present Address :</label>
+                                <input type="text" class="form-control" name="address" id="address" value="{{old('address')}}" placeholder="Address">
+                            </div>
+                            <div class="form-group">
+                                <label for="NAME">Confirm Password :<span id="mark">&nbsp;*</span></label>
+                                <input type="password" class="form-control" name="password_confirmation" id="password" value="" placeholder="Confirm password">
+                                @if($errors->has('password_confirmation'))
+                                    <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="NAME">Designation :<span id="mark">&nbsp;*</span></label>
-                                <select name="designation_id" class="form-control select2bs4" id="designation_id">
-                                    <option value="">----Select Designation----</option>
-                                    @foreach($designations as $designation)
-                                    <option value="{{$designation->designation_id}}" {{ old('designation_id') == $designation->designation_id ? "selected" :""}}>{{$designation->designation_name}}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('designation_id'))
-                                    <span class="text-danger">{{ $errors->first('designation_id') }}</span>
-                                @endif
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">image Preview </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <img id="photo_preview" src="" style="width: 150px;height: 150px">
+                                </div>
                             </div>
                           </div>
                           <!-- /.card-body -->
@@ -169,11 +133,17 @@
 
 @section('custom_script')
 <script>
-    $(function () {
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-  })
+    function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#photo_preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#image").change(function() {
+            readURL(this);
+    });
 </script>
 @endsection

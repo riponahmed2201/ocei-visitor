@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\VisitorRegistration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-class AdminLoginController extends Controller
+class VisitorLoginController extends Controller
 {
     private $errors= [];
     protected $redirectTo = '/dashboard';
@@ -31,22 +31,21 @@ class AdminLoginController extends Controller
     {
 
         $request->validate([
-            'user_name' => 'required',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
-        $auth = User::where('user_name','=', $request->user_name)->first();
+        $auth = VisitorRegistration::where('email','=', $request->email)->first();
         if ($auth) {
             if (Hash::check($request->password, $auth->password)) {
                 session([
-                     'user_id' =>$auth->user_id,
-                     'user_name' =>$auth->user_name,
-                     'role_id' =>$auth->role_id,
+                     'id' =>$auth->id,
+                     'email' =>$auth->email,
+                     'name' =>$auth->name,
+                     'role' =>$auth->role,
                 ]);
                 //dd(session()->get());
-                if ($auth->role_id == 1) {
-                    return redirect('/dashboard');
-                }elseif ($auth->role_id == 9) {
+                if ($auth->role == 'visitor') {
                     return redirect('/dashboard');
                 }else{
                     return redirect('/visitor-login');
@@ -54,7 +53,7 @@ class AdminLoginController extends Controller
 
             }else{
                 return redirect('/visitor-login')
-                ->withInput($request->only('user_name'))
+                ->withInput($request->only('name'))
                 ->withErrors($this->errors);
             }
         }else{

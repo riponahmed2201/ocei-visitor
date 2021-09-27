@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin Log in</title>
+  <title>Visitor Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,7 +31,7 @@
       <form action="{{route('visitor.login_check')}}" method="post">
       	@csrf
         <div class="input-group mb-3">
-          <input type="text" name="user_name" class="form-control" value="{{old('user_name')}}" placeholder="name">
+          <input type="email" name="email" class="form-control" value="{{old('email')}}" placeholder="email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

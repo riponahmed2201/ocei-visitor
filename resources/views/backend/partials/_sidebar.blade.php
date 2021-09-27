@@ -3,7 +3,7 @@
   <a href="{{route('dashboard')}}" class="brand-link">
     <img src="{{asset('images/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
          style="opacity: .8">
-    <span class="brand-text font-weight-light" style="color:green;">|| {{session('user_name')}}</span>
+    <span class="brand-text font-weight-light" style="color:green;">|| {{session('name')}}</span>
   </a>
 
   <!-- Sidebar -->
@@ -14,7 +14,7 @@
         <img src="{{asset('images/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="javascript:void(0)" class="d-block">{{session('user_name')}}</a>
+        <a href="javascript:void(0)" class="d-block">{{session('name')}}</a>
       </div>
     </div>
 
@@ -52,22 +52,31 @@
             </a>
           </li>
         @endif
-
-          @if(Session::get('page')=="forwar-visitor")
-            <?php $active="active"; ?>
-          @else
-            <?php $active=""; ?>
-          @endif
-          @if(session('role_id') == 9)
-          <li class="nav-item has-treeview">
-            <a href="{{route('forward-visitor')}}" class="nav-link {{$active}}">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Visitors
-              </p>
-            </a>
-          </li>
-          @endif
+       <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-search"></i>
+            <p>
+              Appointment
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview" style="display: none;">
+            <li class="nav-item">
+              <a href="{{route('appointment.list')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Appointment</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+        <a href="{{route('official.list')}}" class="nav-link">
+          <i class="nav-icon fa fa-user-secret"></i>
+          <p>
+            Officials
+          </p>
+        </a>
+       </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
