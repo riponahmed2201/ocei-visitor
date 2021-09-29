@@ -27,8 +27,8 @@ class AppointmentController extends Controller
         if ($request->isMethod('post')) {
             $status = $request->status;
 
-            if ($status == true) {
-                dd($status);
+            if ($status || ($from_date && $to_date)) {
+                // dd($status);
                 $appointmentData = DB::table('appointment')
                     ->leftJoin('employee', 'appointment.employee_id', '=', 'employee.employee_id')
                     ->leftJoin('visitor_registration', 'appointment.visitor_id', '=', 'visitor_registration.id')
@@ -36,7 +36,9 @@ class AppointmentController extends Controller
                     ->where('appointment.status', $status)
                     ->orWhereBetween('appointment.date_time', [$from_date, $to_date])
                     ->get();
-                dd($appointmentData);
+
+                // dd($appointmentData);
+
                 return view('backend.appointment.appointment_list', compact('appointmentData'));
             }
         }

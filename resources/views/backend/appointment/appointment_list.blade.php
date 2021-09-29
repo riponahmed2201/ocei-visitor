@@ -29,7 +29,7 @@
                                 <div class="form-group">
                                   <label for="exampleInputFile">Status</label>
                                   <select class="form-control select2bs4" name="status" id="status" style="width: 100%;">
-                                    <option value="-1">----Select Status----</option>
+                                    <option>----select status----</option>
                                     <option value="1">Approved</option>
                                     <option value="0">Pending</option>
                                     <option value="2">Rejected</option>
@@ -58,7 +58,7 @@
                        <a href="#" class="btn btn-success float-left">Back</a>
                        <button type="submit" class="btn btn-primary float-right" style="margin-right: 10px">
                         <span class="fas fa-search"></span>&nbsp;Search
-                       </button> 
+                       </button>
                     </div>
               </form>
             </div>
