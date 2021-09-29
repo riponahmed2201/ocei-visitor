@@ -31,8 +31,11 @@ Route::middleware('visitor')->group(function(){
     ///*********employee***************//
     Route::get('/all-forward-visitor','Backend\EmployeeController@forwardingVisitor')->name('forward-visitor');
     ////*************Appoinment*********************////
-    Route::get('/appointment/list', 'Backend\AppointmentController@index')->name('appointment.list');
-    Route::get('/official/list', 'Backend\OfficialController@officiallist')->name('official.list');
+    Route::match(['get','post'],'official/list','Backend\OfficialController@officiallist')->name('official.list');
+    Route::get('/create/appointment/{employee_id}','Backend\OfficialController@createAppointment')->name('showAppointmentForm');
+    Route::post('/store/appointment','Backend\OfficialController@storeAppointment')->name('storeAppointment');
+    /////**********Appontment List And searching******************/////
+    Route::match(['get','post'],'appointment/list','Backend\AppointmentController@appointmentlist')->name('appointment.list');
 });
 
 

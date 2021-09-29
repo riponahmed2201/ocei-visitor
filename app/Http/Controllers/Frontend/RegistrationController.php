@@ -34,7 +34,7 @@ class RegistrationController extends Controller
              $visitor_register->name=$data['name'];
              $visitor_register->phone=$data['phone'];
              $visitor_register->password=Hash::make($data['password']);
-             $visitor_register->role=$data['role'];
+             $visitor_register->role='visitor';
              $visitor_register->status=1;
               if(!empty($request->input('address'))) {
                     $visitor_register->address = $request->address;

@@ -36,6 +36,7 @@ class VisitorLoginController extends Controller
         ]);
 
         $auth = VisitorRegistration::where('email','=', $request->email)->first();
+        //dd($auth);
         if ($auth) {
             if (Hash::check($request->password, $auth->password)) {
                 session([

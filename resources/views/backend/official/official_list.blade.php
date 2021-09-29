@@ -16,38 +16,35 @@
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                Please Select Status, From Date And To Date
+                Please Select Department
               </h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="enhanced-results.html">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                  <label for="exampleInputFile">Department</label>
-                                  <select class="form-control select2bs4" name="department" id="department" style="width: 100%;">
-                                    <option value="">----Select Department----</option>
-                                    <option value="">fdfdfdfd</option>
-                                  </select>
-                                </div>
-                            </div>
-                            <div class="col-6" data-select2-id="22">
-                                <div class="form-group">
-                                  <label for="exampleInputFile">Sub Depatment</label>
-                                  <input id="fromDate" name="fromDate" placeholder="From Date" type="date" class="form-control input-sm datepicker hasDatepicker" value="">
-                                </div>
+              <form action="{{route('official.list')}}" method="post">
+                @csrf
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="form-group">
+                              <label for="exampleInputFile">Department</label>
+                              <select class="form-control select2bs4" name="designation_name" id="designation_name" style="width: 100%;">
+                                <option value="">----Select Department----</option>
+                                @foreach ($designations as $designation)
+                                    <option value="{{$designation->designation_name}}">{{$designation->designation_name}}</option>
+                                @endforeach
+                              </select>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="card-footer">
+                   <a href="#" class="btn btn-success float-left">Back</a>
+                   <button id="buttonSearch" type="submit" class="btn btn-primary float-right" style="margin-right: 10px">
+                    <span class="fas fa-search"></span>&nbsp;Search
+                   </button> 
+                </div>
               </form>
-            </div>
-            <div class="card-footer">
-               <a href="#" class="btn btn-success float-left">Back</a>
-               <button id="buttonSearch" type="button" class="btn btn-primary float-right" style="margin-right: 10px">
-                <span class="fas fa-search"></span>&nbsp;Search
-               </button> 
             </div>
           </div>
           </div>
@@ -63,9 +60,9 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="all-product" class="table table-bordered table-striped">
+              <table id="all-employee" class="table table-bordered table-striped">
                 <thead>
-                    <tr>
+                    <tr class="bg-success ">
                       <th>SL No</th>
                       <th>Profile</th>
                       <th>Name</th>
@@ -75,6 +72,22 @@
                       <th>Appointment</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <?php $i=1; ?>
+                  @foreach($employee as $emplyee)
+                    <tr>
+                    <td>{{$i++}}</td>
+                    <td><img src="{{ asset('images/avatar.png') }}" style="width: 80px;height: 80px"></td>
+                    <td>{{$emplyee->firstName}} {{$emplyee->lName}}</td>
+                    <td>{{$emplyee->designation_name}} {{$emplyee->employee_id}}</td>
+                    <td>{{$emplyee->ephn}}</td>
+                    <td>{{$emplyee->eemail}}</td>
+                    <td>
+                      <a href="{{url('create/appointment',$emplyee->employee_id)}}" title="Appointment" class="btn btn-success btn-xs"> Get Appointment </a>
+                    </td>
+                   </tr>
+                  @endforeach
+               </tbody>
               </table>
             </div>
           </div>
@@ -95,6 +108,15 @@
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
-})
+  })
+  $(document).ready(function() {
+    $('#all-employee').DataTable( {
+        "info": true,
+          "autoWidth": false,
+          scrollX:'50vh',
+          scrollY:'50vh',
+        scrollCollapse: true,
+    } );
+} );
 </script>
 @endsection
