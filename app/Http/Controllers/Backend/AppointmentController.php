@@ -23,7 +23,6 @@ class AppointmentController extends Controller
             ->select('appointment.*', 'employee.employee_id as employee_id', 'employee.first_name as firstName', 'employee.last_name as lName', 'visitor_registration.name as visitorName')
             ->get();
 
-        // dd($appointment);
 
         if ($request->isMethod('post')) {
             $status = $request->status;
@@ -35,6 +34,7 @@ class AppointmentController extends Controller
                     ->leftJoin('visitor_registration', 'appointment.visitor_id', '=', 'visitor_registration.id')
                     ->select('appointment.*', 'employee.employee_id as employee_id', 'employee.first_name as firstName', 'employee.last_name as lName', 'visitor_registration.name as visitorName')
                     ->where('appointment.status', $status)
+                    ->orWhereBetween('appointment.date_time', [$from_date, $to_date])
                     ->get();
                 dd($appointmentData);
                 return view('backend.appointment.appointment_list', compact('appointmentData'));
