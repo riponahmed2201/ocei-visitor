@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                   <a href="#" class="btn btn-success float-left">Back</a>
+                  <!--  <a href="#" class="btn btn-primary float-left">Search</a> -->
                    <button id="buttonSearch" type="submit" class="btn btn-primary float-right" style="margin-right: 10px">
                     <span class="fas fa-search"></span>&nbsp;Search
                    </button> 
@@ -55,7 +55,7 @@
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                All List Here
+                Please Take Appointment
               </h3>
             </div>
             <!-- /.card-header -->

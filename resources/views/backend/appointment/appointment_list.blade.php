@@ -30,9 +30,9 @@
                                   <label for="exampleInputFile">Status</label>
                                   <select class="form-control select2bs4" name="status" id="status" style="width: 100%;">
                                     <option value="-1">----Select Status----</option>
-                                    <option value="1">Approved</option>
-                                    <option value="0">Pending</option>
-                                    <option value="2">Rejected</option>
+                                    <option value="2">Approved</option>
+                                    <option value="1">Pending</option>
+                                    <option value="3">Rejected</option>
                                   </select>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                       <a href="#" class="btn btn-success float-left">Back</a>
+                       <!-- <a href="#" class="btn btn-success float-left">Back</a> -->
                        <button type="submit" class="btn btn-primary float-right" style="margin-right: 10px">
                         <span class="fas fa-search"></span>&nbsp;Search
                        </button> 
@@ -71,7 +71,7 @@
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                All List Here
+                All Appontment List
               </h3>
             </div>
             <!-- /.card-header -->
@@ -100,11 +100,11 @@
                         <td>{{$aptmentData->purpose}}</td>
                         <td>{{$aptmentData->request_detail}}</td>
                         <td> {{ date('j F Y g:i A', strtotime($aptmentData->date_time)) }} </td>
-                            @if ($aptmentData->status==1)
+                            @if ($aptmentData->status==2)
                                 <td>
                                     <button class="btn btn-sm btn-success btn-xs">Approved</button>
                                 </td>
-                            @elseif($aptmentData->status==0)
+                            @elseif($aptmentData->status==1)
                                 <td>
                                     <button class="btn btn-sm btn-warning btn-xs">Pending</button>
                                 </td>

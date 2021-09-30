@@ -20,7 +20,7 @@
             <div class="inner">
               <h3>2</h3>
 
-              <p>Total Admin</p>
+              <p>Total Appointment</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>

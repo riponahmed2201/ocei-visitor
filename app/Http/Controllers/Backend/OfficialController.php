@@ -66,7 +66,7 @@ class OfficialController extends Controller
              $appointment->date_time=$data['date_time'];
              $appointment->date_time=date("Y-m-d H:i:s",strtotime($data['date_time']));
              $appointment->purpose=$data['purpose'];
-             $appointment->status=0;
+             $appointment->status=1;
               if(!empty($request->input('request_detail'))) {
                     $appointment->request_detail = $request->request_detail;
                 } else {
