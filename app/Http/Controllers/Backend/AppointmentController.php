@@ -25,7 +25,6 @@ class AppointmentController extends Controller
         if ($request->isMethod('post')) {
             $status = $request->status;
 
-
             if ($status || ($from_date && $to_date)) {
                 // dd($status);
 
@@ -40,7 +39,6 @@ class AppointmentController extends Controller
                 return view('backend.appointment.appointment_list', compact('appointmentData'));
             }
         }
-
         return view('backend.appointment.appointment_list', compact('appointmentData'));
     }
 

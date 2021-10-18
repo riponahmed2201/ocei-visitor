@@ -83,7 +83,7 @@
                     <td>{{$emplyee->ephn}}</td>
                     <td>{{$emplyee->eemail}}</td>
                     <td>
-                      <a href="{{url('create/appointment',$emplyee->employee_id)}}" title="Appointment" class="btn btn-success btn-xs"> Get Appointment </a>
+                      <a href="{{url('appointment/create',$emplyee->employee_id)}}" title="Appointment" class="btn btn-success btn-xs"> Get Appointment </a>
                     </td>
                    </tr>
                   @endforeach
