@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\VisitorRegistration;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -34,9 +35,8 @@ class VisitorLoginController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-
         $auth = VisitorRegistration::where('email','=', $request->email)->first();
-        //dd($auth);
+        dd($auth);
         if ($auth) {
             if (Hash::check($request->password, $auth->password)) {
                 session([
@@ -51,7 +51,11 @@ class VisitorLoginController extends Controller
                 }else{
                     return redirect('/visitor-login');
                 }
-
+                if ($auth->role == 'receptionist') {
+                    return redirect('/receptionist_dashboard.blade');
+                }else{
+                    return redirect('/visitor-login');
+                }
             }else{
                 return redirect('/visitor-login')
                 ->withInput($request->only('name'))

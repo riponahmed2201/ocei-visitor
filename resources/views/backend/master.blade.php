@@ -14,8 +14,11 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('backend.partials._sidebar')
-
+  @if(session()->get('role') == 'visitor')
+      @include('partials._sidebar')
+  @elseif (session()->get('role') == 'receptionist')
+      @include('partials._receptionist_sidebar')
+  @endif
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

@@ -12,11 +12,11 @@ use DB;
 class RegistrationController extends Controller
 {
     public function register(){
-        $departments=DB::table('department')->get();
-        $designations=DB::table('designation')->get();
-        $employees=DB::table('employee')->get();
-        //dd($designation);
-        return view('frontend.auth.register')->with(compact('departments','designations','employees'));
+        // $departments=DB::table('department')->get();
+        // $designations=DB::table('designation')->get();
+        // $employees=DB::table('employee')->get();
+        //dd($departments);
+        return view('frontend.auth.register');
     }
 
     public function storeRegister(Request $request){
