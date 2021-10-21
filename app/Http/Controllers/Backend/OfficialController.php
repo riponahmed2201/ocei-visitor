@@ -13,9 +13,16 @@ class OfficialController extends Controller
 {
     public function officiallist(Request $request){
         //$query = "select * from employee";
-        $query = "select designation.*,employee.employee_id as employee_id, employee.first_name as firstName,employee.last_name as lName,employee.phone as ephn,employee.email as eemail from designation left join employee on designation.designation_id=employee.designation_id";
+        $query = "select designation.*,employee.employee_id as employee_id, employee.first_name as firstName,employee.last_name as lName,employee.phone as ephn,employee.email as eemail from designation left join employee on designation.designation_id=employee.designation_id AND designation.designation_name='Admin' OR designation.designation_name='Accounts' OR designation.designation_name='Asst Accounts' OR designation.designation_name='Inspector' OR designation.designation_name='Sr Inspector' OR designation.designation_name='Licencing Board'";
         //dd($query);
-        $data['designations'] =Designation::all();
+        $data['designations'] =Designation::orderBy('designation_name','DESC')
+        ->where('designation_name','=','Admin')
+        ->orWhere('designation_name','=','Inspector')
+        ->orWhere('designation_name','=','Accounts')
+        ->orWhere('designation_name','=','Asst Accounts')
+        ->orWhere('designation_name','=','Licencing Board')
+        ->orWhere('designation_name','=','Sr Inspector')
+        ->get();
         
         if ($request->isMethod('post')) {
           $designation_name = $request->designation_name;
