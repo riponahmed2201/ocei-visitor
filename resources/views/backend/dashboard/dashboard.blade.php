@@ -18,7 +18,7 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>2</h3>
+              <h3>{{$totalAppointment}}</h3>
 
               <p>Total Appointment</p>
             </div>
@@ -33,7 +33,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>2</h3>
+              <h3>{{$totalVisitor}}</h3>
 
               <p>Total Visitor</p>
             </div>
@@ -78,6 +78,9 @@
       <!-- /.row -->
     </div><!-- /.container-fluid -->
   </section>
+  <div class="card-footer clearfix">
+    <a href="{{route('official.list')}}" class="btn btn-success float-left"><i class="fas fa-plus"></i> Create Appointment</a>
+  </div>
 @endsection
 
 @section('custom_script')

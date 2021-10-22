@@ -15,9 +15,9 @@
 
   <!-- Main Sidebar Container -->
   @if(session()->get('role') == 'visitor')
-      @include('partials._sidebar')
+      @include('backend.partials._sidebar')
   @elseif (session()->get('role') == 'receptionist')
-      @include('partials._receptionist_sidebar')
+      @include('backend.partials._receptionist_sidebar')
   @endif
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

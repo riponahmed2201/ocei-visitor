@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Appointment;
+use App\VisitorRegistration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -19,7 +21,11 @@ class HomeController extends Controller
 
     public function dashboard(){
         Session::put('page','dashboard');
-        return view('backend.dashboard.dashboard');
+        $visitor_id=session('id');
+        $totalAppointment=Appointment::where('visitor_id',$visitor_id)->count();
+        $totalVisitor=VisitorRegistration::all()->count();
+        //dd($totalAppointment);
+        return view('backend.dashboard.dashboard')->with(compact('totalAppointment','totalVisitor'));
     }
 
     public function profile(){

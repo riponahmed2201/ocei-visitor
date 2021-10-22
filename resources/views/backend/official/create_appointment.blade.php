@@ -65,12 +65,6 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                  <label for="exampleInputFile">Request Details</label>
-                                  <textarea class="form-control" name="request_detail" rows="3" cols="3" placeholder="Request Details"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
                                   <label for="exampleInputFile">Purpose <span style="color: red;" class="required">*</span></label>
                                   <select class="form-control select2bs4" name="purpose" id="purpose" style="width: 100%;">
                                     <option value="">----Select----</option>
@@ -84,6 +78,12 @@
                                   @if($errors->has('purpose'))
                                     <span class="text-danger">{{ $errors->first('purpose') }}</span>
                                   @endif
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                  <label for="exampleInputFile">Request Details</label>
+                                  <textarea class="form-control" name="request_detail" rows="3" cols="3" placeholder="Request Details"></textarea>
                                 </div>
                             </div>
                             <div class="col-6">

@@ -1,11 +1,7 @@
 <aside class="main-sidebar elevation-4 sidebar-light-teal">
-  <!-- Brand Logo -->
-  <a href="{{route('dashboard')}}" class="brand-link">
-    <img src="{{asset('images/bcc_logo.png')}}" alt="AdminLTE Logo"
-         style="opacity: 0.8;width: 130px;height: 129px;object-fit: cover;">
-    <span class="brand-text font-weight-light" style="color: #ff8b00!important;font-size: 20px;"> E-Pass</span>
+  <a href="#" class="brand-link">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 240px; object-fit: cover;">
   </a>
-
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
