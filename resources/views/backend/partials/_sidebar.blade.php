@@ -1,6 +1,13 @@
 <aside class="main-sidebar elevation-4 sidebar-light-teal">
+<<<<<<< HEAD
   <a href="#" class="brand-link">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 240px; object-fit: cover;">
+=======
+  <!-- Brand Logo -->
+  <a href="{{route('dashboard')}}" class="brand-link">
+    <img src="{{asset('images/logo2.png')}}" alt="AdminLTE Logo"
+         style="opacity: 0.8;width: 245px;height: 129px;object-fit: cover;">
+>>>>>>> bfd748da390eec4816a288f51d3c4030d5892c11
   </a>
   <!-- Sidebar -->
   <div class="sidebar">
