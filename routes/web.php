@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\OfficialController;
 use App\Http\Controllers\Backend\AppointmentController;
+use App\Http\Controllers\Backend\ReceptionistController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -44,6 +45,17 @@ Route::middleware('visitor')->group(function(){
         /////**********Appontment List And searching******************/////
         Route::match(['get','post'],'/list',[AppointmentController::class, 'appointmentlist'])->name('appointment.list');
      });
+});
+
+Route::middleware('receptionist')->group(function(){
+    Route::get('/receptionists-dashboard', 'Backend\HomeController@receptionistDashboard')->name('receptionist.dashboard');
+    Route::group(['prefix' => 'receptionists'], function () {
+      Route::match(['get','post'],'/appointment-list', [ReceptionistController::class,'checkAppointmentList'])->name('checkAppointmentList');
+      Route::get('/create/appointment/{appointment_id}',[ReceptionistController::class, 'receptionistsCreateAppointment'])->name('showreReptionistsAppointment');
+      Route::post('/store',[ReceptionistController::class, 'storeReceptionistsData'])->name('storeReceptionistsData');
+      Route::get('/all/visitor', [SectionController::class, 'allVisitorAppontmentData'])->name('allVisitorAppontmentData');
+      //Route::get('/render/section/datatable','Admin\SectionController@rendersectionDataTable');
+    });
 });
 
 

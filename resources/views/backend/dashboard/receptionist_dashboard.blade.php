@@ -1,6 +1,6 @@
 @extends('backend.master')
 
-@section('title', 'receptionist Dashboard')
+@section('title', 'Receptionist Dashboard')
 @section('dashboard-title', 'Dashboard')
 @section('breadcrumb-title', 'Dashboard Information')
 

@@ -16,22 +16,22 @@
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                Please Select Department
+                Please Select Phone Number
               </h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="{{route('official.list')}}" method="post">
+              <form action="{{route('checkAppointmentList')}}" method="post">
                 @csrf
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
                             <div class="form-group">
-                              <label for="exampleInputFile">Department</label>
-                              <select class="form-control select2bs4" name="designation_name" id="designation_name" style="width: 100%;">
+                              <label for="exampleInputFile">Phone Number</label>
+                              <select class="form-control select2bs4" name="phone" id="phone" style="width: 100%;">
                                 <option value="">----Select Department----</option>
-                                @foreach ($designations as $designation)
-                                    <option value="{{$designation->designation_name}}">{{$designation->designation_name}}</option>
+                                @foreach ($visitorAppointments as $visitorAppointment)
+                                    <option value="{{$visitorAppointment->phone}}">{{$visitorAppointment->phone}}</option>
                                 @endforeach
                               </select>
                             </div>
@@ -55,7 +55,7 @@
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                Please Take Appointment
+                All Appointments
               </h3>
             </div>
             <!-- /.card-header -->
@@ -64,26 +64,42 @@
                 <thead>
                     <tr class="bg-success ">
                       <th>SL No</th>
-                      <th>Profile</th>
                       <th>Name</th>
-                      <th>Office</th>
                       <th>Phone</th>
-                      <th>Email</th>
-                      <th>Appointment</th>
+                      <th>Approval Of</th>
+                      <th>Purpose</th>
+                      <th>Request Details</th>
+                      <th>Date & Time</th>
+                      <th>Status</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php $i=1; ?>
-                  @foreach($employee as $emplyee)
+                   @foreach($checkAppointmentList as $checkAppointment)
                     <tr>
                     <td>{{$i++}}</td>
                     <td><img src="{{ asset('images/avatar.png') }}" style="width: 80px;height: 80px"></td>
-                    <td>{{$emplyee->firstName}} {{$emplyee->lName}}</td>
-                    <td>{{$emplyee->designation_name}}</td>
-                    <td>{{$emplyee->ephn}}</td>
-                    <td>{{$emplyee->eemail}}</td>
+                    <td>{{$checkAppointment->visitorPhone}}</td>
+                    <td>{{$checkAppointment->empeeName}}{{$checkAppointment->epeeLastName}}</td>
+                    <td>{{$checkAppointment->purpose}}</td>
+                    <td>{{$checkAppointment->request_detail}}</td>
+                    <td>{{ date('j F Y g:i A', strtotime($checkAppointment->date_time)) }}</td>
+                      @if ($checkAppointment->status==2)
+                        <td>
+                            <button class="btn btn-sm btn-success btn-xs">Approved</button>
+                        </td>
+                      @elseif($checkAppointment->status==1)
+                        <td>
+                            <button class="btn btn-sm btn-warning btn-xs">Pending</button>
+                        </td>
+                      @else
+                        <td>
+                            <button class="btn btn-sm btn-danger btn-xs">Rejected</button>
+                        </td>
+                      @endif
                     <td>
-                      <a href="{{url('appointment/create',$emplyee->employee_id)}}" title="Appointment" class="btn btn-success btn-xs"> Get Appointment </a>
+                      <a href="{{url('receptionists/create/appointment',$checkAppointment->id)}}" title="ReceptionistCheckAppointment" class="btn btn-success btn-xs"><i class="fas fa-plus-square"></i></a>
                     </td>
                    </tr>
                   @endforeach

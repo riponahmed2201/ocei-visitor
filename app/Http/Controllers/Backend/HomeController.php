@@ -28,6 +28,10 @@ class HomeController extends Controller
         return view('backend.dashboard.dashboard')->with(compact('totalAppointment','totalVisitor'));
     }
 
+    public function receptionistDashboard(){
+        return view('backend.dashboard.receptionist_dashboard');
+    }
+
     public function profile(){
         return view('backend.profile.profile');
     }

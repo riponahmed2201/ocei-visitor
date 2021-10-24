@@ -1,11 +1,8 @@
 <aside class="main-sidebar elevation-4 sidebar-light-teal">
   <!-- Brand Logo -->
-  <a href="{{route('dashboard')}}" class="brand-link">
-    <img src="{{asset('images/bcc_logo.png')}}" alt="AdminLTE Logo"
-         style="opacity: 0.8;width: 130px;height: 129px;object-fit: cover;">
-    <span class="brand-text font-weight-light" style="color: #ff8b00!important;font-size: 20px;"> E-Pass</span>
+  <a href="{{route('receptionist.dashboard')}}" class="brand-link">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 240px; object-fit: cover;">
   </a>
-
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -22,12 +19,29 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link #">
+          <a href="{{route('receptionist.dashboard')}}" class="nav-link {{ request()->is('receptionists-dashboard') ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
             </p>
           </a>
+        </li>
+        <li class="nav-item has-treeview {{ request()->is('receptionists/*') ? ' menu-open' : '' }}">
+          <a href="javascript:void(0)" class="nav-link {{ request()->is('receptionists/*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-search"></i>
+            <p>
+              Appointments
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview" style="display: none;">
+            <li class="nav-item">
+              <a href="{{route('checkAppointmentList')}}" class="nav-link {{ request()->is('receptionists/appointment-list') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Appointment List</p>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>

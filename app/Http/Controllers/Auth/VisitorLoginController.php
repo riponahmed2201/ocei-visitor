@@ -40,29 +40,30 @@ class VisitorLoginController extends Controller
         if ($auth) {
             if (Hash::check($request->password, $auth->password)) {
                 session([
-                     'id' =>$auth->id,
-                     'email' =>$auth->email,
-                     'name' =>$auth->name,
-                     'role' =>$auth->role,
+                    'id' =>$auth->id,
+                    'email' =>$auth->email,
+                    'name' =>$auth->name,
+                    'role' =>$auth->role,
                 ]);
-                //dd(session()->get());
                 if ($auth->role == 'visitor') {
                     return redirect('/dashboard');
-                }else{
+                } elseif ($auth->role == 'receptionist') {
+                    if ($auth->status == 1) {
+                        return redirect('/receptionists-dashboard');
+                    } else {
+                        return redirect('/visitor-login')->with('failed', 'Your are not active.');
+                    }
+                } else {
                     return redirect('/visitor-login');
                 }
-                if ($auth->role == 'receptionist') {
-                    return redirect('/receptionist_dashboard.blade');
-                }else{
-                    return redirect('/visitor-login');
-                }
-            }else{
-                return redirect('/visitor-login')
-                ->withInput($request->only('name'))
-                ->withErrors($this->errors);
+            } else {
+                // return redirect('/')
+                //     ->withInput($request->only('email'))
+                //     ->withErrors($this->errors);
+                return redirect('/visitor-login')->with('failed', 'Password do not match.');
             }
-        }else{
-            return back()->with('failed','No Account For This Email');
+        } else {
+            return back()->with('failed', 'No account for this email');
         }
     }
     
