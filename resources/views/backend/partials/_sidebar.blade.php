@@ -1,5 +1,4 @@
 <aside class="main-sidebar elevation-4 sidebar-light-teal">
-<<<<<<< HEAD
   <a href="{{route('dashboard')}}" class="brand-link">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 240px; object-fit: cover;">
   </a>
@@ -7,7 +6,6 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <!-- <div class="mt-5 pb-3 mb-3 d-flex">
-=======
     <a href="#" class="brand-link">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 240px; object-fit: cover;">
 
@@ -16,7 +14,6 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <!-- <div class="mt-5 pb-3 mb-3 d-flex">
->>>>>>> 0393cac5722dc3e303c35d7c29ef26e8d60ddba6
       <div class="image">
         <img src="{{ asset('images/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
       </div>

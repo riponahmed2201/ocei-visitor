@@ -43,6 +43,14 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item">
+          <a href="{{route('appontmentHistoryData')}}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Appointment History
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

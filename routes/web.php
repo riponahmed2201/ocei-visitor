@@ -53,8 +53,9 @@ Route::middleware('receptionist')->group(function(){
       Route::match(['get','post'],'/appointment-list', [ReceptionistController::class,'checkAppointmentList'])->name('checkAppointmentList');
       Route::get('/create/appointment/{appointment_id}',[ReceptionistController::class, 'receptionistsCreateAppointment'])->name('showreReptionistsAppointment');
       Route::post('/store',[ReceptionistController::class, 'storeReceptionistsData'])->name('storeReceptionistsData');
-      Route::get('/all/visitor', [SectionController::class, 'allVisitorAppontmentData'])->name('allVisitorAppontmentData');
-      //Route::get('/render/section/datatable','Admin\SectionController@rendersectionDataTable');
+      Route::get('/appointment/history', [ReceptionistController::class, 'appontmentHistoryData'])->name('appontmentHistoryData');
+      Route::post('/appointment/done', [ReceptionistController::class, 'doneAppointment']);
+      Route::post('/appointment/pending',[ReceptionistController::class, 'pendingAppointment']);
     });
 });
 

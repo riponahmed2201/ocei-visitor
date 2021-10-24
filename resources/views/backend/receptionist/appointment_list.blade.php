@@ -31,7 +31,7 @@
                               <select class="form-control select2bs4" name="phone" id="phone" style="width: 100%;">
                                 <option value="">----Select Department----</option>
                                 @foreach ($visitorAppointments as $visitorAppointment)
-                                    <option value="{{$visitorAppointment->phone}}">{{$visitorAppointment->phone}}</option>
+                                    <option value="{{$visitorAppointment->visitorPhone}}">{{$visitorAppointment->visitorPhone}}</option>
                                 @endforeach
                               </select>
                             </div>

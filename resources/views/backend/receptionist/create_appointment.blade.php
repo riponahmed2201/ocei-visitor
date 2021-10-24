@@ -42,6 +42,14 @@
                         <div class="row">
                             <div class="col-6" hidden="">
                               <div class="form-group">
+                                <label>Appointment ID</label>
+                                  <div class="input-group date" data-target-input="nearest">
+                                      <input type="number" name="appointment_id" value="{{$appointments->id}}" class="form-control" readonly="">
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="col-6" hidden="">
+                              <div class="form-group">
                                 <label>Visitor ID</label>
                                   <div class="input-group date" data-target-input="nearest">
                                       <input type="number" name="visitor_id" value="{{$appointments->visitor_id}}" class="form-control" readonly="">
@@ -78,11 +86,11 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                  <label for="exampleInputFile">Appointment Id<span style="color: red;">*</span></label>
-                                 <input type="text" name="appointment_id" class="form-control" value="{{old('appointment_id')}}">
+                                  <label for="exampleInputFile">ID Card Number<span style="color: red;">*</span></label>
+                                 <input type="number" name="id_card_number" class="form-control" value="{{old('id_card_number')}}">
                                 </div>
-                                 @if($errors->has('appointment_id'))
-                                  <span class="text-danger">{{ $errors->first('appointment_id') }}</span>
+                                 @if($errors->has('id_card_number'))
+                                  <span class="text-danger">{{ $errors->first('id_card_number') }}</span>
                                 @endif
                             </div>
                         </div>
