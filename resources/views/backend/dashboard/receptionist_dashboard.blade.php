@@ -18,7 +18,7 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>2</h3>
+              <h3>{{$totalAppointment}}</h3>
 
               <p>Total Appointment</p>
             </div>
@@ -33,7 +33,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>2</h3>
+              <h3>{{$totalVisitor}}</h3>
 
               <p>Total Visitor</p>
             </div>
@@ -48,9 +48,9 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>4</h3>
+              <h3>{{$totalGetPassVisitor}}</h3>
 
-              <p>Register Visitor</p>
+              <p>Get Pass Done Visitor</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -63,9 +63,9 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>2</h3>
+              <h3>{{$totalGetPassVisitorPending}}</h3>
 
-              <p>Unique Visitors</p>
+              <p>Get Pass Pending Visitor</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>

@@ -27,12 +27,12 @@
                     <tr class="bg-success ">
                       <th>SL No</th>
                       <th>Id Card Number</th>
-                      <th>Visitor Name</th>
-                      <th>Phone</th>
+                      <th>Visitor Name & Phone</th>
                       <th>Approval Of</th>
                       <th>Purpose</th>
                       <th>Request Details</th>
-                      <th>Date & Time</th>
+                      <th>Appointment Date & Time</th>
+                      <th>Gate Pass Date & Time</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -42,12 +42,17 @@
                     <tr>
                     <td><input type="checkbox" name="appointmentData_ids[]" value="{{$appointmentHistoryData->id}}"></td>
                     <td>{{$appointmentHistoryData->id_card_number}}</td>
-                    <td>{{$appointmentHistoryData->visitorName}}</td>
-                    <td>{{$appointmentHistoryData->visitorPhn}}</td>
+                    <td>{{$appointmentHistoryData->visitorName}} <br>{{$appointmentHistoryData->visitorPhn}}</td>
                     <td>{{$appointmentHistoryData->firstName}} {{$appointmentHistoryData->lName}}</td>
                     <td>{{$appointmentHistoryData->purpose}}</td>
                     <td>{{$appointmentHistoryData->request_detail}}</td>
                     <td>{{ date('j F Y g:i A', strtotime($appointmentHistoryData->date_time)) }}</td>
+                    @if ($appointmentHistoryData->status==1)
+                    <td>{{ date('j F Y g:i A', strtotime($appointmentHistoryData->updated_at)) }}</td>
+                    @else
+                    <td>{{ date('j F Y g:i A', strtotime($appointmentHistoryData->updated_at)) }}</td>
+                    @endif
+
                       @if ($appointmentHistoryData->status==1)
                         <td>
                             <button class="btn btn-sm btn-success btn-xs">Done</button>

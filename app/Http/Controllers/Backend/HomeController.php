@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Appointment;
+use App\Receptionist;
 use App\VisitorRegistration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +30,11 @@ class HomeController extends Controller
     }
 
     public function receptionistDashboard(){
-        return view('backend.dashboard.receptionist_dashboard');
+        $totalAppointment=Appointment::all()->count();
+        $totalVisitor=VisitorRegistration::all()->count();
+        $totalGetPassVisitor=Receptionist::where('status',1)->count();
+        $totalGetPassVisitorPending=Receptionist::where('status',0)->count();
+        return view('backend.dashboard.receptionist_dashboard')->with(compact('totalAppointment','totalVisitor','totalGetPassVisitor','totalGetPassVisitorPending'));
     }
 
     public function profile(){
