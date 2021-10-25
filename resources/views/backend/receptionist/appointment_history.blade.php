@@ -44,7 +44,7 @@
                     <td>{{$appointmentHistoryData->id_card_number}}</td>
                     <td>{{$appointmentHistoryData->visitorName}}</td>
                     <td>{{$appointmentHistoryData->visitorPhn}}</td>
-                    <td>{{$appointmentHistoryData->firstName}}{{$appointmentHistoryData->lName}}</td>
+                    <td>{{$appointmentHistoryData->firstName}} {{$appointmentHistoryData->lName}}</td>
                     <td>{{$appointmentHistoryData->purpose}}</td>
                     <td>{{$appointmentHistoryData->request_detail}}</td>
                     <td>{{ date('j F Y g:i A', strtotime($appointmentHistoryData->date_time)) }}</td>

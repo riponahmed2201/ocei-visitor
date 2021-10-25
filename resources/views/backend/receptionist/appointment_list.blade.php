@@ -99,7 +99,7 @@
                         </td>
                       @endif
                     <td>
-                      <a href="{{url('receptionists/create/appointment',$checkAppointment->id)}}" title="ReceptionistCheckAppointment" class="btn btn-success btn-xs"><i class="fas fa-plus-square"></i></a>
+                      <a href="{{url('receptionists/create/appointment',$checkAppointment->id)}}" title="Get Pass" class="btn btn-success btn-xs"><i class="fas fa-plus-square"></i></a>
                     </td>
                    </tr>
                   @endforeach
