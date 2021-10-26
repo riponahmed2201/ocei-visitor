@@ -1,4 +1,4 @@
-<aside class="main-sidebar elevation-4 sidebar-light-teal">
+<aside class="main-sidebar elevation-4 sidebar-light-blue">
   <!-- Brand Logo -->
   <a href="{{route('receptionist.dashboard')}}" class="brand-link">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 240px; object-fit: cover;">
@@ -28,13 +28,13 @@
         </li>
         <li class="nav-item has-treeview {{ request()->is('receptionists/*') ? ' menu-open' : '' }}">
           <a href="javascript:void(0)" class="nav-link {{ request()->is('receptionists/*') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-search"></i>
+            <i class="nav-icon fas fa-search text-green"></i>
             <p>
               Appointments
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview" style="display: none;">
+          <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{{route('checkAppointmentList')}}" class="nav-link {{ request()->is('receptionists/appointment-list') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
@@ -44,10 +44,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="{{route('appontmentHistoryData')}}" class="nav-link">
+          <a href="{{route('appontmentHistoryData')}}" class="nav-link {{ request()->is('receptionists/appointment/history') ? 'active' : '' }}">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Appointment History
+              All Visitor History
             </p>
           </a>
         </li>

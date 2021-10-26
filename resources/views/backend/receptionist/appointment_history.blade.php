@@ -1,8 +1,8 @@
 @extends('backend.master')
 
-@section('title', 'All Appointment History')
-@section('dashboard-title', 'All Appointment History')
-@section('breadcrumb-title', 'All Appointment  History')
+@section('title', 'All Visitor Appointment History')
+@section('dashboard-title', 'All Visitor Appointment History')
+@section('breadcrumb-title', 'All Visitor Appointment  History')
 
 @section('stylesheet')
     <!-- <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">

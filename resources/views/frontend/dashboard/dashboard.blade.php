@@ -1,4 +1,5 @@
 @extends('frontend.master')
+@section('title', 'Ocei Index')
 @section('stylesheet')
 
 @endsection

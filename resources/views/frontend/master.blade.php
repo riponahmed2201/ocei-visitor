@@ -25,7 +25,7 @@
         <div class="row">
             <div style="margin-left: 10px; margin-right: 10px;">
                 <marquee width="100%" direction="left" height="80px">
-                    <h1 style="color: red;">New Registration And Application Submission Time has been Expired.</h1>
+                    <h1 style="color: red;">Please Registration First Then You Can Login.</h1>
                 </marquee>
             </div>
         </div>
