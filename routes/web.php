@@ -49,11 +49,11 @@ Route::middleware('visitor')->group(function(){
 
 Route::middleware('receptionist')->group(function(){
     Route::get('/receptionists-dashboard', 'Backend\HomeController@receptionistDashboard')->name('receptionist.dashboard');
+    Route::get('/appointment/history', [ReceptionistController::class, 'appontmentHistoryData'])->name('appontmentHistoryData');
     Route::group(['prefix' => 'receptionists'], function () {
-      Route::match(['get','post'],'/appointment-list', [ReceptionistController::class,'checkAppointmentList'])->name('checkAppointmentList');
+      Route::match(['get','post'],'/appointment/list', [ReceptionistController::class,'checkAppointmentList'])->name('checkAppointmentList');
       Route::get('/create/appointment/{appointment_id}',[ReceptionistController::class, 'receptionistsCreateAppointment'])->name('showreReptionistsAppointment');
       Route::post('/store',[ReceptionistController::class, 'storeReceptionistsData'])->name('storeReceptionistsData');
-      Route::get('/appointment/history', [ReceptionistController::class, 'appontmentHistoryData'])->name('appontmentHistoryData');
       Route::post('/appointment/done', [ReceptionistController::class, 'doneAppointment']);
       Route::post('/appointment/pending',[ReceptionistController::class, 'pendingAppointment']);
     });

@@ -21,7 +21,7 @@ class AppointmentController extends Controller
         $appointmentData = DB::table('appointment')
             ->leftJoin('employee', 'appointment.employee_id', '=', 'employee.employee_id')
             ->leftJoin('visitor_registration', 'appointment.visitor_id', '=', 'visitor_registration.id')
-            ->select('appointment.*', 'employee.first_name as emplyName','employee.last_name as employeeLName', 'employee.first_name as firstName', 'employee.last_name as lName', 'visitor_registration.name as visitorName')
+            ->select('appointment.*', 'employee.first_name as firstName','employee.last_name as lName', 'visitor_registration.name as visitorName')
             ->where('appointment.visitor_id','=',$visitor_id)
             ->get();
         //dd($appointmentData);    

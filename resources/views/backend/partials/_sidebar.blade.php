@@ -3,7 +3,6 @@
         <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 240px; object-fit: cover;">
   </a>
   <!-- Sidebar -->
-  <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <!-- <div class="mt-5 pb-3 mb-3 d-flex">
     <a href="#" class="brand-link">
@@ -48,14 +47,14 @@
                     <a href="#" class="nav-link {{ request()->is('appointment/*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-search"></i>
                         <p>
-                            Appointment
+                            Appointments
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" style="display: none;">
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('appointment.list') }}"
-                                class="nav-link {{ request()->is('list') ? 'active' : '' }}">
+                                class="nav-link {{ request()->is('appointment/list') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Appointment</p>
                             </a>
