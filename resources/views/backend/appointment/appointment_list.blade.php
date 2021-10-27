@@ -96,7 +96,8 @@
                         <td>{{$i++}}</td>
                         <td>{{$aptmentData->visitorName}}</td>
                         <td>{{$aptmentData->firstName}} {{$aptmentData->lName}}</td>
-                        <td><button type="button" class="btn btn-block btn-info btn-xs">{{$aptmentData->firstName}} {{$aptmentData->lName}}</button></td>
+                        <td><small class="badge badge-info">{{$aptmentData->firstName}} {{$aptmentData->lName}}</small>
+                        </td>
                         <td>{{$aptmentData->purpose}}</td>
                         <td>{{$aptmentData->request_detail}}</td>
                         <td> {{ date('j F Y g:i A', strtotime($aptmentData->date_time)) }} </td>

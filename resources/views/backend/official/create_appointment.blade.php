@@ -86,15 +86,6 @@
                                   <textarea class="form-control" name="request_detail" rows="3" cols="3" placeholder="Request Details"></textarea>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                  <label for="exampleInputFile">Document</label>
-                                  <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="document" id="document">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                  </div>
-                                </div>
-                            </div>
                             <div hidden="" class="col-6">
                                 <div class="form-group">
                                   <label for="exampleInputFile">visitor id</label>

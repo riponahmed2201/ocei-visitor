@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,12 +22,16 @@ class HomeController extends Controller
     }
 
     public function dashboard(){
-        Session::put('page','dashboard');
         $visitor_id=session('id');
         $totalAppointment=Appointment::where('visitor_id',$visitor_id)->count();
-        $totalVisitor=VisitorRegistration::all()->count();
-        //dd($totalAppointment);
-        return view('backend.dashboard.dashboard')->with(compact('totalAppointment','totalVisitor'));
+        $appointmentListData = DB::table('appointment')
+            ->leftJoin('employee', 'appointment.employee_id', '=', 'employee.employee_id')
+            ->leftJoin('visitor_registration', 'appointment.visitor_id', '=', 'visitor_registration.id')
+            ->select('appointment.*', 'employee.first_name as firstName','employee.last_name as lName', 'visitor_registration.name as visitorName')
+            ->where('appointment.visitor_id','=',$visitor_id)
+            ->get();
+        //dd($appointmentData);
+        return view('backend.dashboard.dashboard')->with(compact('totalAppointment','appointmentListData'));
     }
 
     public function receptionistDashboard(){

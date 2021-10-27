@@ -32,7 +32,8 @@
                       <th>Purpose</th>
                       <th>Request Details</th>
                       <th>Appointment Date & Time</th>
-                      <th>Gate Pass Date & Time</th>
+                      <th>Start Date & Time</th>
+                      <th>End Date & Time</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -47,8 +48,9 @@
                     <td>{{$appointmentHistoryData->purpose}}</td>
                     <td>{{$appointmentHistoryData->request_detail}}</td>
                     <td>{{ date('j F Y g:i A', strtotime($appointmentHistoryData->date_time)) }}</td>
-                    @if ($appointmentHistoryData->status==1)
-                    <td>{{ date('j F Y g:i A', strtotime($appointmentHistoryData->updated_at)) }}</td>
+                    <td>{{ date('j F Y g:i A', strtotime($appointmentHistoryData->created_at)) }}</td>
+                    @if ($appointmentHistoryData->status==0)
+                    <td></td>
                     @else
                     <td>{{ date('j F Y g:i A', strtotime($appointmentHistoryData->updated_at)) }}</td>
                     @endif

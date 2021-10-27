@@ -23,7 +23,7 @@ class OfficialController extends Controller
         ->orWhere('designation_name','=','Licencing Board')
         ->orWhere('designation_name','=','Sr Inspector')
         ->get();
-        
+        //dd($data['designations']);
         if ($request->isMethod('post')) {
           $designation_name = $request->designation_name;
 
@@ -79,15 +79,6 @@ class OfficialController extends Controller
                 } else {
                     $appointment->request_detail = 'Null';
              }
-             // file upload
-                if ($request->hasFile('document')){
-                    $photo = $request->file('document');
-                    $filename = time().".".$photo->getClientOriginalExtension();
-                    $destination_path = public_path('documents');
-                    $photo->move($destination_path,$filename);
-                    $appointment->document = $filename;
-                }
-              //dd($appointment);
              $appointment->save();
              return redirect()->back()->with('success','Successfully Appointment Created!');
         }

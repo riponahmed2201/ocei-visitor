@@ -92,6 +92,7 @@ class ReceptionistController extends Controller
             ->leftJoin('visitor_registration', 'receptionist_appointment.visitor_id', '=', 'visitor_registration.id')
             ->leftJoin('appointment', 'receptionist_appointment.appointment_id', '=', 'appointment.id')
             ->select('receptionist_appointment.*', 'employee.first_name as firstName', 'employee.last_name as lName', 'visitor_registration.name as visitorName','visitor_registration.phone as visitorPhn')
+            ->where('receptionist_appointment.status','=',0)
             ->get();
         //dd($appointmentHistory);
         return view('backend.receptionist.appointment_history')->with(compact('appointmentHistory'));
